@@ -5,23 +5,21 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject enemyPrefabs;
-    private float timeToSpawn = 5;
-    public float timeRemaining;
+    [SerializeField] private float timeToSpawn;
+    private float time = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        time = timeToSpawn;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        timeRemaining += Time.deltaTime;
-        if (timeRemaining >= timeToSpawn)
+        time -= Time.deltaTime;
+        if (time <= 0)
         {
             GameObject enemy = Instantiate(enemyPrefabs, this.transform.position, Quaternion.identity);
-            timeRemaining = 0;
+            time = timeToSpawn;
         }
     }
 
