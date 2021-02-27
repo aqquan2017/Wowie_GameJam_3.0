@@ -43,9 +43,7 @@ public class PlayerController : MonoBehaviour
             playerRb.MovePosition(playerRb.position + playerDir * moveSpeed * Time.deltaTime);
 
             Vector2 lookDir = mousePos - (Vector2)this.transform.position;
-            float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-
-            playerRb.rotation = lookAngle;
+            transform.up = lookDir;
         }
         
     }
@@ -56,6 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                CameraCinemachineShake.Instance.SetShake(50f, 0.7f);
                 GameObject bullet = Instantiate(bulletPrefabs, bulletStartPoint.position, this.transform.rotation);
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
                 bulletRb.AddForce(bullet.transform.up * bulletMoveSpeed, ForceMode2D.Impulse);

@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D enemyRb;
     private float enemyMoveSpeed = 3;
 
-    public float health = 100;
+    private float health = 100;
     private GameObject player;
 
     // Start is called before the first frame update
@@ -52,5 +52,14 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.transform.position, range);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            health -= 20;
+
+        }
     }
 }
