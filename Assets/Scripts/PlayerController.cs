@@ -50,5 +50,34 @@ public class PlayerController : MonoBehaviour
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.AddForce(bullet.transform.up * bulletMoveSpeed, ForceMode2D.Impulse);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerRb.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Player Death");
+        playerRb.AddForce(Vector2.up * 150, ForceMode2D.Impulse);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Electric Wall")
+        {
+
+        }
+        else if (collision.gameObject.tag == "Enemy")
+        {
+
+        }
+
+    }
+
+    void ReSpawnPlayer()
+    {
+
     }
 }
