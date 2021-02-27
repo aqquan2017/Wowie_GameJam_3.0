@@ -12,14 +12,18 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer spite;
 
     private float health = 100;
-    private GameObject player;
+    private GameManager gameManager;
+    private GameObject target;
+
+    public Transform spawnPos;
 
     // Start is called before the first frame update
     void Start()
     {
         spite = GetComponent<SpriteRenderer>();
         enemyRb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -37,7 +41,10 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         ChasingPlayer();
-
+        if (!gameManager.target.GetComponent<PlayerController>().playable)
+        {
+            ReturnToStartPos();
+        }
     }
 
     void ChasingPlayer()
@@ -49,8 +56,21 @@ public class EnemyController : MonoBehaviour
 
         foreach (Collider2D col in playerCol)
         {
-            enemyRb.MovePosition(this.transform.position + (col.gameObject.transform.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
+            if (col.gameObject.GetComponent<PlayerController>().playable)
+            {
+                enemyRb.MovePosition(this.transform.position + (col.gameObject.transform.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
+
+            }
         }
+    }
+
+    public void ReturnToStartPos()
+    {
+        if ((spawnPos.position - this.transform.position).magnitude <= 0.1f)
+            return;
+
+        enemyRb.MovePosition(this.transform.position + (spawnPos.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
+
     }
 
     private void OnDrawGizmosSelected()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2539021592212031845}
   - component: {fileID: 2539021592212031842}
   - component: {fileID: 7792534614841464322}
+  - component: {fileID: 1187079937}
   m_Layer: 0
   m_Name: Cam Track Player
   m_TagString: Untagged
@@ -80,6 +81,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be429223fb3822b4fbba2d24f3e9e458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1187079937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539021592212031843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ce5d2fe3f1a8b48ab85bf06ce5c18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &2539021592252436989
 GameObject:
   m_ObjectHideFlags: 0

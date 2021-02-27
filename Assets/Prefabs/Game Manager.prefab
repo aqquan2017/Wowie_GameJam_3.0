@@ -46,3 +46,7 @@ MonoBehaviour:
   playerPrefabs: {fileID: 2564555862948843162, guid: 8a465d793d1ddb744b4567f764b87fd9, type: 3}
   playerStartPoint: {fileID: 0}
   isDead: 0
+  cameraCinemachineTrack: {fileID: 0}
+  players:
+  - {fileID: 0}
+  target: {fileID: 0}

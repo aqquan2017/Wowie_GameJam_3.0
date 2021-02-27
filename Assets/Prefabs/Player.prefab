@@ -365,10 +365,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  cam: {fileID: 0}
   bulletPrefabs: {fileID: 3792525624293230561, guid: 7a252eb24f0edd542999d1bec1614e32, type: 3}
   bulletStartPoint: {fileID: 2564555863317169001}
   playable: 1
+  globalLight: {fileID: 665988877}
+  pointLight: {fileID: 2237105569137115917}
 --- !u!1 &2564555863317169002
 GameObject:
   m_ObjectHideFlags: 0

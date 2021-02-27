@@ -15,12 +15,19 @@ public class SpawnEnemy : MonoBehaviour
 
     void Update()
     {
-        time -= Time.deltaTime;
-        if (time <= 0)
+        
+        if (this.transform.childCount == 0)
         {
-            GameObject enemy = Instantiate(enemyPrefabs, this.transform.position, Quaternion.identity);
-            time = timeToSpawn;
+            time -= Time.deltaTime;
+            if (time <= 0)
+            {
+                GameObject enemy = Instantiate(enemyPrefabs, this.transform.position, Quaternion.identity);
+                enemy.transform.parent = this.transform;
+                enemy.GetComponent<EnemyController>().spawnPos = this.transform;
+                time = timeToSpawn;
+            }
         }
+        
     }
 
 }

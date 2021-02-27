@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5;
 
     private Vector2 mousePos;
-    public Camera cam;
+    private Camera cam;
 
     public GameObject bulletPrefabs;
     public Transform bulletStartPoint;
@@ -18,11 +18,15 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     public bool playable = true;
 
+    public GameObject globalLight;
+    public GameObject pointLight;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -95,10 +99,15 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.tag == "Enemy")
             {
                 gameManager.isDead = true;
-                playable = false;
+                
                 Color deadColor = this.GetComponent<SpriteRenderer>().color;
                 deadColor.a = 30;
                 this.GetComponent<SpriteRenderer>().color = deadColor;
+
+                globalLight.SetActive(false);
+                //pointLight.SetActive(false);
+
+                playable = false;
             }
         }
     }
