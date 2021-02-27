@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  cam: {fileID: 0}
+  cam: {fileID: 40289684884786341, guid: 84b103ff451837d4b906e407d79dc127, type: 3}
   bulletPrefabs: {fileID: 3792525624293230561, guid: 7a252eb24f0edd542999d1bec1614e32, type: 3}
   bulletStartPoint: {fileID: 2564555863317169001}
 --- !u!1 &2564555863317169002
