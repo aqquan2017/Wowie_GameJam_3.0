@@ -54,10 +54,23 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                CameraCinemachineShake.Instance.SetShake(50f, 0.7f);
+                CameraCinemachineShake.Instance.SetShake(70f, 0.7f);
                 GameObject bullet = Instantiate(bulletPrefabs, bulletStartPoint.position, this.transform.rotation);
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-                bulletRb.AddForce(bullet.transform.up * bulletMoveSpeed, ForceMode2D.Impulse);
+
+                Vector2 bulletDir = (Vector2) bullet.transform.up;
+
+                //get random direction;
+                if(bulletDir.x < bulletDir.y)
+                {
+                    bulletDir.x = Random.Range(bulletDir.x - 0.1f, bulletDir.x + 0.1f);
+                }
+                else
+                {
+                    bulletDir.y = Random.Range(bulletDir.y - 0.1f, bulletDir.y + 0.1f);
+                }
+
+                bulletRb.AddForce(bulletDir * bulletMoveSpeed, ForceMode2D.Impulse);
             }
         }
         

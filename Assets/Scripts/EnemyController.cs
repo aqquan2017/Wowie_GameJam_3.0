@@ -7,7 +7,9 @@ public class EnemyController : MonoBehaviour
     private float range = 20;
     public LayerMask playerLayer;
     private Rigidbody2D enemyRb;
-    private float enemyMoveSpeed = 3;
+    [SerializeField] private float enemyMoveSpeed = 3;
+
+    private SpriteRenderer spite;
 
     private float health = 100;
     private GameObject player;
@@ -15,6 +17,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spite = GetComponent<SpriteRenderer>();
         enemyRb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
     }
@@ -26,6 +29,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.2f);
         
     }
 
@@ -54,10 +59,15 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, range);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            spite.color = new Color(Random.value, Random.value, Random.value, 1);
+            enemyRb.AddForce(collision.relativeVelocity * 20);
+
+            enemyMoveSpeed = 0;
             health -= 20;
 
         }
