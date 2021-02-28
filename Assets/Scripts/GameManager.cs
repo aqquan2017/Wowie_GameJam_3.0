@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public GameObject target;
     [SerializeField] private int playersPlayable;
+    private bool canSwitchPlayable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RespawnPlayer()
     {
+        canSwitchPlayable = false;
         yield return new WaitForSeconds(3);
         GameObject player = Instantiate(playerPrefabs, playerStartPoint.position, playerPrefabs.transform.rotation);
         player.name = "Player";
@@ -59,11 +61,12 @@ public class GameManager : MonoBehaviour
         }
 
         SetTarget();
+        canSwitchPlayable = true;
     }
 
     void SetPlayerPlayable()
     {
-        if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2)
+        if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2 && canSwitchPlayable)
         {
             foreach (GameObject player in players)
             {
