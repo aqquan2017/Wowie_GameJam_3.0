@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2031269218767615842}
   - component: {fileID: 4056474339352412455}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: Sound Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,18 +141,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundDB:
-  - name: Backgound Music
+  - name: 0
     audio: {fileID: 0}
     volume: 1
-  - name: Player Shoot Sound
+  - name: 1
+    audio: {fileID: 8300000, guid: acd13d9d06e0d594ab76cce92afad430, type: 3}
+    volume: 1
+  - name: 2
     audio: {fileID: 8300000, guid: 0db71c5d67a147645b77155c7e46ae57, type: 3}
     volume: 1
-  - name: Player Shoot Wall Sound
-    audio: {fileID: 8300000, guid: 1de2da8e3e851354b9ad6f5b99e76f83, type: 3}
-    volume: 1
-  - name: Player Shoot Enemy Sound
+  - name: 3
     audio: {fileID: 8300000, guid: 2e43fe322281b144d87ad1a81879e748, type: 3}
     volume: 1
-  - name: Enemy Die Sound
+  - name: 4
     audio: {fileID: 8300000, guid: f14e52eee1a8f5c49a1a689f99bf7bac, type: 3}
+    volume: 1
+  - name: 5
+    audio: {fileID: 8300000, guid: 1de2da8e3e851354b9ad6f5b99e76f83, type: 3}
     volume: 1
