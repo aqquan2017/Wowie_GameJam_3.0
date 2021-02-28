@@ -1694,7 +1694,7 @@ Transform:
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1527077689
 PrefabInstance:
@@ -1831,7 +1831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672356864
 GameObject:
@@ -1999,62 +1999,6 @@ PrefabInstance:
     - target: {fileID: 3952876973324544655, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
       propertyPath: m_Name
       value: Sound Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[0].name
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[1].name
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[2].name
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[3].name
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[4].name
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[5].name
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[0].audio
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[1].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: acd13d9d06e0d594ab76cce92afad430, type: 3}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[2].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: 0db71c5d67a147645b77155c7e46ae57, type: 3}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[3].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: 2e43fe322281b144d87ad1a81879e748, type: 3}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[4].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: f14e52eee1a8f5c49a1a689f99bf7bac, type: 3}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[5].audio
-      value: 
-      objectReference: {fileID: 8300000, guid: 1de2da8e3e851354b9ad6f5b99e76f83, type: 3}
-    - target: {fileID: 4056474339352412455, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
-      propertyPath: soundDB.Array.data[5].volume
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 047e7d353fef3f048befd37eb8433846, type: 3}
