@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             Vector2 lookDir = mousePos - (Vector2)this.transform.position;
             transform.up = lookDir;
         }
-        
+        playerRb.velocity = Vector2.Lerp(playerRb.velocity, Vector2.zero, Time.deltaTime);
     }
 
     void Shooting()
