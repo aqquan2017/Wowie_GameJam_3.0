@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 82f4c59964684de4cbebf8ede8012657, type: 3}
-  m_Color: {r: 1, g: 0.33490568, b: 0.94457567, a: 1}
+  m_Color: {r: 0.9811321, g: 0.46650052, b: 0.93875057, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -233,8 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e533a89303eabf74cb3f39884a7fcd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 20
+  detectRange: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
   enemyMoveSpeed: 3
+  enemyBulletSpeed: 7
+  shotPlayerDuration: 4
+  enemyBullet: {fileID: 3792525624293230561, guid: 7a252eb24f0edd542999d1bec1614e32, type: 3}

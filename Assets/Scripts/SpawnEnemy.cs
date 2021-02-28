@@ -23,7 +23,6 @@ public class SpawnEnemy : MonoBehaviour
             {
                 GameObject enemy = Instantiate(enemyPrefabs, this.transform.position, Quaternion.identity);
                 enemy.transform.parent = this.transform;
-                enemy.GetComponent<EnemyController>().spawnPos = this.transform;
                 time = timeToSpawn;
             }
         }

@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private float range = 20;
+    protected float range = 20;
     public LayerMask playerLayer;
-    private Rigidbody2D enemyRb;
-    [SerializeField] private float enemyMoveSpeed = 3;
+    protected Rigidbody2D enemyRb;
+    [SerializeField] protected float enemyMoveSpeed = 3;
 
-    private SpriteRenderer sprite;
+    protected SpriteRenderer sprite;
 
-    private float health = 100;
+    protected float health = 100;
     private GameObject target;
 
-    public Transform spawnPos;
+    public Vector3 spawnPos;
 
-    private Color currentColor;
+    protected Color currentColor;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        spawnPos = transform.position;
         sprite = GetComponent<SpriteRenderer>();
         currentColor = sprite.color;
         enemyRb = GetComponent<Rigidbody2D>();
 
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (health <= 0)
         {
@@ -38,9 +38,10 @@ public class EnemyController : MonoBehaviour
 
         enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.5f * Time.deltaTime);
         sprite.color = Color.Lerp(sprite.color, currentColor, 10f * Time.deltaTime);
+        enemyRb.velocity = Vector2.Lerp(enemyRb.velocity, Vector2.zero, 0.9f);
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         ChasingPlayer();
         if (!GameManager.Instance.target.GetComponent<PlayerController>().playable)
@@ -68,10 +69,10 @@ public class EnemyController : MonoBehaviour
 
     public void ReturnToStartPos()
     {
-        if ((spawnPos.position - this.transform.position).magnitude <= 0.1f)
+        if ((spawnPos - this.transform.position).magnitude <= 0.1f)
             return;
 
-        enemyRb.MovePosition(this.transform.position + (spawnPos.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
+        enemyRb.MovePosition(this.transform.position + (spawnPos - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
 
     }
 
