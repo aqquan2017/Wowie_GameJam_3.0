@@ -21,12 +21,15 @@ public class PlayerController : MonoBehaviour
     public GameObject globalLight;
     public GameObject pointLight;
 
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -46,9 +49,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             globalLight.SetActive(false);
-
-            
-            
         }
             
 
@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                soundManager.PlaySound(1);
+
                 CameraCinemachineShake.Instance.SetShake(70f, 0.7f);
                 GameObject bullet = Instantiate(bulletPrefabs, bulletStartPoint.position, this.transform.rotation);
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
