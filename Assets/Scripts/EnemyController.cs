@@ -17,12 +17,15 @@ public class EnemyController : MonoBehaviour
 
     public Transform spawnPos;
 
+    private SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
         spite = GetComponent<SpriteRenderer>();
         enemyRb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
 
     }
 
@@ -32,6 +35,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(this.gameObject);
+            soundManager.PlaySound(4);
         }
 
         enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.2f);

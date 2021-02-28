@@ -143,13 +143,16 @@ MonoBehaviour:
   soundDB:
   - name: Backgound Music
     audio: {fileID: 0}
-    volume: 0
+    volume: 1
   - name: Player Shoot Sound
     audio: {fileID: 0}
-    volume: 0
+    volume: 1
   - name: Player Shoot Wall Sound
     audio: {fileID: 0}
-    volume: 0
+    volume: 1
   - name: Player Shoot Enemy Sound
     audio: {fileID: 0}
-    volume: 0
+    volume: 1
+  - name: Enemy Die Sound
+    audio: {fileID: 0}
+    volume: 1
