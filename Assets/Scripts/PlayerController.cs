@@ -44,7 +44,14 @@ public class PlayerController : MonoBehaviour
             globalLight.SetActive(true);
         }
         else
+        {
             globalLight.SetActive(false);
+
+            
+            
+        }
+            
+
     }
 
     private void FixedUpdate()
@@ -97,6 +104,13 @@ public class PlayerController : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        else
+        {
+            if (collision.gameObject.tag == "Bullet")
+            {
+                Debug.Log("GO");
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -113,9 +127,16 @@ public class PlayerController : MonoBehaviour
 
                 //globalLight.SetActive(false);
                 //pointLight.SetActive(false);
-
+            //   this.gameObject.GetComponent<Collider2D>().isTrigger = true;
                 playable = false;
+
+                gameObject.layer = LayerMask.NameToLayer("Corpse");
             }
         }
+        else
+        {
+            
+        }
     }
+
 }

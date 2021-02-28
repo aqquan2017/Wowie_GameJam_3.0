@@ -71,6 +71,14 @@ public class GameManager : MonoBehaviour
             foreach (GameObject player in players)
             {
                 player.GetComponent<PlayerController>().playable = !player.GetComponent<PlayerController>().playable;
+                if (player.layer == 6)
+                {
+                    player.layer = LayerMask.NameToLayer("Player");
+                }
+                else
+                {
+                    player.layer = LayerMask.NameToLayer("Corpse");
+                }
             }
 
             SetTarget();
