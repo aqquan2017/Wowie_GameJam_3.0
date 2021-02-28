@@ -50,3 +50,4 @@ MonoBehaviour:
   players:
   - {fileID: 0}
   target: {fileID: 0}
+  playersPlayable: 2

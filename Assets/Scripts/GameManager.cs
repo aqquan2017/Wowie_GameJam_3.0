@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> players = new List<GameObject>();
     public GameObject target;
+    [SerializeField] private int playersPlayable;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
             StartCoroutine(RespawnPlayer());
             isDead = false;
         }
+
+        SetPlayerPlayable();
     }
 
     void SetTarget()
@@ -48,6 +51,26 @@ public class GameManager : MonoBehaviour
         player.name = "Player";
         players.Add(player);
 
+        if (players.Count > playersPlayable)
+        {
+            
+            Destroy(players[0]);
+            players.RemoveAt(0);
+        }
+
         SetTarget();
+    }
+
+    void SetPlayerPlayable()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2)
+        {
+            foreach (GameObject player in players)
+            {
+                player.GetComponent<PlayerController>().playable = !player.GetComponent<PlayerController>().playable;
+            }
+
+            SetTarget();
+        }
     }
 }

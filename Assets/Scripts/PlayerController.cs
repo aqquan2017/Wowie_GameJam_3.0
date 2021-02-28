@@ -38,6 +38,13 @@ public class PlayerController : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         Shooting();
+
+        if (playable)
+        {
+            globalLight.SetActive(true);
+        }
+        else
+            globalLight.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -104,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 deadColor.a = 30;
                 this.GetComponent<SpriteRenderer>().color = deadColor;
 
-                globalLight.SetActive(false);
+                //globalLight.SetActive(false);
                 //pointLight.SetActive(false);
 
                 playable = false;
