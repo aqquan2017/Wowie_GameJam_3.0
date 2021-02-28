@@ -412,6 +412,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn Point (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9063472578801069080, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9063472578801069086, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1707,6 +1711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn Point (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9063472578801069080, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9063472578801069086, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2495,6 +2503,10 @@ PrefabInstance:
     - target: {fileID: 9063472578801069080, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
       propertyPath: m_Name
       value: Enemy Spawn Point (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063472578801069080, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9063472578801069086, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
       propertyPath: m_RootOrder
