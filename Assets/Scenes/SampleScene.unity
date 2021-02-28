@@ -771,6 +771,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9063472578801069087, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
+      propertyPath: enemyPrefabs
+      value: 
+      objectReference: {fileID: 1326946603690097314, guid: 06e21999b49320d49a1f6b0fa219855b, type: 3}
+    - target: {fileID: 9063472578801069087, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
       propertyPath: timeRemaining
       value: 3
       objectReference: {fileID: 0}
@@ -1759,6 +1763,10 @@ PrefabInstance:
       propertyPath: timeToSpawn
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9063472578801069087, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
+      propertyPath: enemyPrefabs
+      value: 
+      objectReference: {fileID: 1326946603690097314, guid: 06e21999b49320d49a1f6b0fa219855b, type: 3}
     - target: {fileID: 9063472578801069087, guid: 8aaf679e38a349145a735fbc571d05cf, type: 3}
       propertyPath: timeRemaining
       value: 3

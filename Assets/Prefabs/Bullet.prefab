@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7dce82ffd60e14298a5b50a9f9e4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  littleExposePartical: {fileID: 3769511568337745252, guid: 477674cb29747ca438b83896dffbc872, type: 3}
 --- !u!96 &8361982551705878250
 TrailRenderer:
   serializedVersion: 2

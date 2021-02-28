@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public Vector3 spawnPos;
 
     protected Color currentColor;
+    public ParticleSystem bloodPartical;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -34,6 +35,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
             SoundManager.Instance.PlaySound(SoundName.EnemyDie);
+            Instantiate(bloodPartical, this.transform.position, Quaternion.identity);
+            //bloodPartical.Play();
         }
 
         enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.5f * Time.deltaTime);
