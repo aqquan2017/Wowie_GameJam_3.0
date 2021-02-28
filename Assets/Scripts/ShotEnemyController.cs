@@ -42,17 +42,29 @@ public class ShotEnemyController : EnemyController
                 Vector2 thisToPlayerDir = col.transform.position - transform.position;
                 transform.up = thisToPlayerDir;
 
+                    Debug.DrawLine(transform.position, transform.position + transform.up * range, Color.red);
                 if(rechargeDuration <= 0f)
                 {
-                    Debug.DrawLine(transform.position, transform.position + transform.up * range, Color.red);
-                    //if(Physics.Raycast(transform.position, transform.up, detectRange, playerLayer))
+                    Ray r = new Ray(transform.position, transform.up);
+                    //if (Physics.Raycast(r, range, playerLayer))
                     //{
-                        GameObject bullet = Instantiate(enemyBullet, transform.position + transform.up * 2, transform.rotation);
+                        Vector3 rotateVectorLeft = Quaternion.Euler(0, 0, 45) * transform.up;  
+                        Vector3 rotateVectorRight = Quaternion.Euler(0, 0, -45) * transform.up;
 
-                        bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * enemyBulletSpeed, ForceMode2D.Impulse);
-                        print("ENEMY SHOT");
+                        GameObject bullet1 = Instantiate(enemyBullet, transform.position + rotateVectorLeft * 2, transform.rotation);
+                        GameObject bullet2 = Instantiate(enemyBullet, transform.position + rotateVectorRight * 2, transform.rotation);
+                        GameObject bullet3 = Instantiate(enemyBullet, transform.position + transform.up * 2, transform.rotation);
+
+                    bullet1.GetComponent<Rigidbody2D>().AddForce(rotateVectorLeft * enemyBulletSpeed, ForceMode2D.Impulse);
+                    bullet2.GetComponent<Rigidbody2D>().AddForce(rotateVectorRight * enemyBulletSpeed, ForceMode2D.Impulse);
+                    bullet3.GetComponent<Rigidbody2D>().AddForce(transform.up * enemyBulletSpeed, ForceMode2D.Impulse);
+                    print("ENEMY SHOT");
 
                         rechargeDuration = shotPlayerDuration;
+                    //}
+                    //else
+                    //{
+                    //    print("ERR");
                     //}
 
                 }
