@@ -55,6 +55,14 @@ public class ShotEnemyController : EnemyController
                         GameObject bullet2 = Instantiate(enemyBullet, transform.position + rotateVectorRight * 2, transform.rotation);
                         GameObject bullet3 = Instantiate(enemyBullet, transform.position + transform.up * 2, transform.rotation);
 
+                    bullet1.GetComponent<Bullet>().fromPlayer = false;
+                    bullet2.GetComponent<Bullet>().fromPlayer = false;
+                    bullet3.GetComponent<Bullet>().fromPlayer = false;
+
+                    bullet1.layer = LayerMask.NameToLayer("TransparentFX");
+                    bullet2.layer = LayerMask.NameToLayer("TransparentFX");
+                    bullet3.layer = LayerMask.NameToLayer("TransparentFX");
+
                     bullet1.GetComponent<Rigidbody2D>().AddForce(rotateVectorLeft * enemyBulletSpeed, ForceMode2D.Impulse);
                     bullet2.GetComponent<Rigidbody2D>().AddForce(rotateVectorRight * enemyBulletSpeed, ForceMode2D.Impulse);
                     bullet3.GetComponent<Rigidbody2D>().AddForce(transform.up * enemyBulletSpeed, ForceMode2D.Impulse);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public ParticleSystem littleExposePartical;
+    public bool fromPlayer;
 
     void Start()
     {
@@ -13,18 +14,18 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Wall")))
-        {
-            SoundManager.Instance.PlaySound(SoundName.WallHit);
-            Instantiate(littleExposePartical, this.transform.position, Quaternion.identity);
-            //littleExposePartical.Play();
-        }
-
         if (collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Enemy")))
         {
             SoundManager.Instance.PlaySound(SoundName.EnemyHit);
-            Instantiate(littleExposePartical, this.transform.position, Quaternion.identity);
-            //littleExposePartical.Play();
+            ParticleSystem littleExpose = Instantiate(littleExposePartical, this.transform.position, Quaternion.identity);
+            Destroy(littleExpose.gameObject, 4);
+        }
+
+        if(collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Wall")))
+        {
+            SoundManager.Instance.PlaySound(SoundName.WallHit);
+            ParticleSystem littleExpose = Instantiate(littleExposePartical, this.transform.position, Quaternion.identity);
+            Destroy(littleExpose.gameObject, 4);
         }
 
         Destroy(gameObject);

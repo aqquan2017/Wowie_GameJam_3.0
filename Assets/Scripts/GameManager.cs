@@ -82,14 +82,19 @@ public class GameManager : MonoBehaviour
 
             foreach (GameObject player in players)
             {
-                player.GetComponent<PlayerController>().playable = !player.GetComponent<PlayerController>().playable;
+                //player.GetComponent<PlayerController>().playable = !player.GetComponent<PlayerController>().playable;
+
                 if (player.layer == 6)
                 {
                     player.layer = LayerMask.NameToLayer("Player");
+                    player.GetComponent<PlayerController>().playable = true;
+                    player.GetComponent<PlayerController>().health = 100;
                 }
                 else
                 {
                     player.layer = LayerMask.NameToLayer("Corpse");
+                    player.GetComponent<PlayerController>().playable = false;
+                    player.GetComponent<PlayerController>().health = 0;
                 }
             }
 

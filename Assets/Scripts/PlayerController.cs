@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public GameObject globalLight;
     public GameObject pointLight;
 
+    public float health = 100;
+    public ParticleSystem bloodPartical;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,8 @@ public class PlayerController : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         Shooting();
+
+        
 
         if (playable)
         {
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour
 
                 CameraCinemachineShake.Instance.SetShake(150f, 0.7f);
                 GameObject bullet = Instantiate(bulletPrefabs, bulletStartPoint.position, this.transform.rotation);
+                bullet.GetComponent<Bullet>().fromPlayer = true;
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
                 Vector2 bulletDir = (Vector2) bullet.transform.up;
@@ -116,6 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
+                health = 0;
                 SoundManager.Instance.PlaySound(SoundName.PlayerDie);
 
                 GameManager.Instance.isDead = true;
@@ -124,12 +131,29 @@ public class PlayerController : MonoBehaviour
                 deadColor.a = 30;
                 this.GetComponent<SpriteRenderer>().color = deadColor;
 
-                //globalLight.SetActive(false);
-                //pointLight.SetActive(false);
-            //   this.gameObject.GetComponent<Collider2D>().isTrigger = true;
                 playable = false;
 
                 gameObject.layer = LayerMask.NameToLayer("Corpse");
+            }
+
+            if (collision.gameObject.tag == "Bullet")
+            {
+                health -= 20;
+                if (health <= 0)
+                {
+                    SoundManager.Instance.PlaySound(SoundName.PlayerDie);
+                    //Instantiate(bloodPartical, this.transform.position, Quaternion.identity);
+
+                    GameManager.Instance.isDead = true;
+
+                    Color deadColor = this.GetComponent<SpriteRenderer>().color;
+                    deadColor.a = 30;
+                    this.GetComponent<SpriteRenderer>().color = deadColor;
+
+                    playable = false;
+
+                    gameObject.layer = LayerMask.NameToLayer("Corpse");
+                }
             }
         }
         else

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
 
     protected SpriteRenderer sprite;
 
-    protected float health = 100;
+    [SerializeField]protected float health = 100;
     private GameObject target;
 
     public Vector3 spawnPos;
@@ -35,7 +35,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
             SoundManager.Instance.PlaySound(SoundName.EnemyDie);
-            Instantiate(bloodPartical, this.transform.position, Quaternion.identity);
+            ParticleSystem blood = Instantiate(bloodPartical, this.transform.position, Quaternion.identity);
+            Destroy(blood, 4);
             //bloodPartical.Play();
         }
 
@@ -90,11 +91,15 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            sprite.color = Color.white;
-            enemyRb.AddForce(collision.relativeVelocity * 5, ForceMode2D.Impulse);
+            if (collision.gameObject.GetComponent<Bullet>().fromPlayer)
+            {
+                sprite.color = Color.white;
+                enemyRb.AddForce(collision.relativeVelocity * 5, ForceMode2D.Impulse);
 
-            enemyMoveSpeed = 0;
-            health -= 20;
+                enemyMoveSpeed = 0;
+                health -= 20;
+            }
+            
 
         }
     }
