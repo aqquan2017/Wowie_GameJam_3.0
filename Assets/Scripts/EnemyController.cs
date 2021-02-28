@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D enemyRb;
     [SerializeField] private float enemyMoveSpeed = 3;
 
-    private SpriteRenderer spite;
+    private SpriteRenderer sprite;
 
     private float health = 100;
     private GameManager gameManager;
@@ -18,11 +18,13 @@ public class EnemyController : MonoBehaviour
     public Transform spawnPos;
 
     private SoundManager soundManager;
+    private Color currentColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        spite = GetComponent<SpriteRenderer>();
+        sprite = GetComponent<SpriteRenderer>();
+        currentColor = sprite.color;
         enemyRb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
@@ -35,11 +37,11 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            soundManager.PlaySound(4);
+            soundManager.PlaySound(SoundName.EnemyDie);
         }
 
-        enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.2f);
-        
+        enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.5f * Time.deltaTime);
+        sprite.color = Color.Lerp(sprite.color, currentColor, 10f * Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -88,8 +90,8 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            spite.color = new Color(Random.value, Random.value, Random.value, 1);
-            enemyRb.AddForce(collision.relativeVelocity * 20);
+            sprite.color = Color.white;
+            enemyRb.AddForce(collision.relativeVelocity * 5, ForceMode2D.Impulse);
 
             enemyMoveSpeed = 0;
             health -= 20;

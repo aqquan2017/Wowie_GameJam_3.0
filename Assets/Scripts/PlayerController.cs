@@ -72,9 +72,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                soundManager.PlaySound(1);
+                soundManager.PlaySound(SoundName.PlayerShot);
 
-                CameraCinemachineShake.Instance.SetShake(70f, 0.7f);
+                CameraCinemachineShake.Instance.SetShake(150f, 0.7f);
                 GameObject bullet = Instantiate(bulletPrefabs, bulletStartPoint.position, this.transform.rotation);
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 

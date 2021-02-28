@@ -14,13 +14,13 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
-        {
-            soundManager.PlaySound(2);
+        if(collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Wall"))){
+            soundManager.PlaySound(SoundName.WallHit);
         }
-        if (collision.gameObject.tag == "Enemy")
+
+        if (collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Enemy")))
         {
-            soundManager.PlaySound(3);
+            soundManager.PlaySound(SoundName.EnemyHit);
         }
 
         Destroy(gameObject);

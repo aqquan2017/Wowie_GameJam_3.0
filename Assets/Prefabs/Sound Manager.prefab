@@ -145,14 +145,14 @@ MonoBehaviour:
     audio: {fileID: 0}
     volume: 1
   - name: Player Shoot Sound
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 0db71c5d67a147645b77155c7e46ae57, type: 3}
     volume: 1
   - name: Player Shoot Wall Sound
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 1de2da8e3e851354b9ad6f5b99e76f83, type: 3}
     volume: 1
   - name: Player Shoot Enemy Sound
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 2e43fe322281b144d87ad1a81879e748, type: 3}
     volume: 1
   - name: Enemy Die Sound
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f14e52eee1a8f5c49a1a689f99bf7bac, type: 3}
     volume: 1
