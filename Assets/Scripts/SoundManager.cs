@@ -10,6 +10,16 @@ public enum SoundName
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
+
     private AudioSource audioSource;
 
     public List<SoundDB> soundDB = new List<SoundDB>();

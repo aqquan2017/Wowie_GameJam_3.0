@@ -12,12 +12,10 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer sprite;
 
     private float health = 100;
-    private GameManager gameManager;
     private GameObject target;
 
     public Transform spawnPos;
 
-    private SoundManager soundManager;
     private Color currentColor;
 
     // Start is called before the first frame update
@@ -26,8 +24,6 @@ public class EnemyController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         currentColor = sprite.color;
         enemyRb = GetComponent<Rigidbody2D>();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
 
     }
 
@@ -37,7 +33,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            soundManager.PlaySound(SoundName.EnemyDie);
+            SoundManager.Instance.PlaySound(SoundName.EnemyDie);
         }
 
         enemyMoveSpeed = Mathf.Lerp(enemyMoveSpeed, 3, 0.5f * Time.deltaTime);
@@ -47,7 +43,7 @@ public class EnemyController : MonoBehaviour
     private void FixedUpdate()
     {
         ChasingPlayer();
-        if (!gameManager.target.GetComponent<PlayerController>().playable)
+        if (!GameManager.Instance.target.GetComponent<PlayerController>().playable)
         {
             ReturnToStartPos();
         }

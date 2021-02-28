@@ -15,21 +15,16 @@ public class PlayerController : MonoBehaviour
     public Transform bulletStartPoint;
     private float bulletMoveSpeed = 10;
 
-    private GameManager gameManager;
     public bool playable = true;
 
     public GameObject globalLight;
     public GameObject pointLight;
 
-    private SoundManager soundManager;
-
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-        soundManager = GameObject.Find("Sound Manager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -72,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                soundManager.PlaySound(SoundName.PlayerShot);
+                SoundManager.Instance.PlaySound(SoundName.PlayerShot);
 
                 CameraCinemachineShake.Instance.SetShake(150f, 0.7f);
                 GameObject bullet = Instantiate(bulletPrefabs, bulletStartPoint.position, this.transform.rotation);
@@ -102,7 +97,7 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Electric Wall")
             {
-                gameManager.isDead = true;
+                GameManager.Instance.isDead = true;
                 Destroy(this.gameObject);
             }
         }
@@ -121,7 +116,9 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                gameManager.isDead = true;
+                SoundManager.Instance.PlaySound(SoundName.PlayerDie);
+
+                GameManager.Instance.isDead = true;
                 
                 Color deadColor = this.GetComponent<SpriteRenderer>().color;
                 deadColor.a = 30;

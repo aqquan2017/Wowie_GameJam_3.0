@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+    }
+
     public GameObject playerPrefabs;
     public Transform playerStartPoint;
 
@@ -68,6 +78,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2 && canSwitchPlayable)
         {
+            SoundManager.Instance.PlaySound(SoundName.PlayerChange);
+
             foreach (GameObject player in players)
             {
                 player.GetComponent<PlayerController>().playable = !player.GetComponent<PlayerController>().playable;
