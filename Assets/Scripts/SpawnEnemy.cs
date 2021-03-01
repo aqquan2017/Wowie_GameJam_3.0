@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    public enum BoxSelection
+    {
+        Box1, Box2
+    }
+
+    public BoxSelection box;
+
     public GameObject enemyPrefabs;
     [SerializeField] private float timeToSpawn;
     private float time = 0;

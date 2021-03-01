@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private GameObject target;
 
     public Vector3 spawnPos;
+    public string boxSelect;
 
     protected Color currentColor;
     public ParticleSystem bloodPartical;
@@ -26,6 +27,15 @@ public class EnemyController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         currentColor = sprite.color;
         enemyRb = GetComponent<Rigidbody2D>();
+
+        if (this.gameObject.GetComponentInParent<SpawnEnemy>().box == SpawnEnemy.BoxSelection.Box1)
+        {
+            boxSelect = "Box1";
+        }
+        else if (this.gameObject.GetComponentInParent<SpawnEnemy>().box == SpawnEnemy.BoxSelection.Box2)
+        {
+            boxSelect = "Box2";
+        }
 
     }
 
@@ -63,7 +73,7 @@ public class EnemyController : MonoBehaviour
 
         foreach (Collider2D col in playerCol)
         {
-            if (col.gameObject.GetComponent<PlayerController>().playable)
+            if (col.gameObject.GetComponent<PlayerController>().playable && col.gameObject.GetComponent<PlayerController>().enemyCanAttack == boxSelect)
             {
                 enemyRb.MovePosition(this.transform.position + (col.gameObject.transform.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
 

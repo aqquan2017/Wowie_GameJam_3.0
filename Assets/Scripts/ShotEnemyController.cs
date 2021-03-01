@@ -10,6 +10,7 @@ public class ShotEnemyController : EnemyController
 
     public GameObject enemyBullet;
 
+    ShotEnemyController shotE = new ShotEnemyController();
 
     protected override void Start()
     {
@@ -37,7 +38,7 @@ public class ShotEnemyController : EnemyController
         Collider2D[] playerCol = Physics2D.OverlapCircleAll(this.transform.position, range, playerLayer);
         foreach (Collider2D col in playerCol)
         {
-            if (col.gameObject.GetComponent<PlayerController>().playable)
+            if (col.gameObject.GetComponent<PlayerController>().playable  && col.gameObject.GetComponent<PlayerController>().enemyCanAttack == shotE.boxSelect)
             {
                 Vector2 thisToPlayerDir = col.transform.position - transform.position;
                 transform.up = thisToPlayerDir;
