@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
 
             if (collision.gameObject.tag == "Bullet")
             {
-                health -= 20;
+                health -= 50;
                 if (health <= 0)
                 {
                     SoundManager.Instance.PlaySound(SoundName.PlayerDie);

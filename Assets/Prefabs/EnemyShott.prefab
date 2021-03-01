@@ -239,8 +239,8 @@ MonoBehaviour:
   enemyMoveSpeed: 3
   health: 60
   spawnPos: {x: 0, y: 0, z: 0}
-  boxSelect: 
+  boxSelect: 0
   bloodPartical: {fileID: 7649820816425280622, guid: 7431db5c8854843469c13f3a56064fd1, type: 3}
-  enemyBulletSpeed: 3
-  shotPlayerDuration: 2
+  enemyBulletSpeed: 4
+  shotPlayerDuration: 3
   enemyBullet: {fileID: 3792525624293230561, guid: 7a252eb24f0edd542999d1bec1614e32, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8427411325795844688}
   - component: {fileID: 8427411325795844689}
   - component: {fileID: 8427411325795844690}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Laser
   m_TagString: Electric Wall
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1401798ea536c9a4cb2330bc83233f84, type: 3}
-  m_Color: {r: 1, g: 0.88550186, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.88550186, b: 0, a: 0.19607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
