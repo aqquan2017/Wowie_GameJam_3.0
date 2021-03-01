@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public bool playable = true;
     public bool deadByEnemy;
-    public string enemyCanAttack;
+    public bool enemyCanAttack = true;
 
     public GameObject globalLight;
     public GameObject pointLight;
@@ -177,16 +177,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Box1")
-        {
-            enemyCanAttack = collision.gameObject.name;
-        }
-        else if (collision.gameObject.name == "Box2")
-        {
-            enemyCanAttack = collision.gameObject.name;
-        }
-    }
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.name == "Box1")
+    //    {
+    //        enemyCanAttack = collision.gameObject.name;
+    //    }
+    //    else if (collision.gameObject.name == "Box2")
+    //    {
+    //        enemyCanAttack = collision.gameObject.name;
+    //    }
+    //}
 
 }
