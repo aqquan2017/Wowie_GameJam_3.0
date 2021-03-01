@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 5327465321447635893}
   - component: {fileID: 2289052982556950235}
   m_Layer: 0
-  m_Name: Fake Box 2
+  m_Name: Box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 8620474060552432138}
   - component: {fileID: 1357990705477813028}
   m_Layer: 0
-  m_Name: Fake Box 1
+  m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8248932992320026936}
   m_Layer: 0
-  m_Name: Obstacles
+  m_Name: Obstacles Map 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

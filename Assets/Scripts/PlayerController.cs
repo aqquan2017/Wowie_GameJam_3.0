@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public bool playable = true;
     public bool deadByEnemy;
-    public bool enemyCanAttack = true;
+    public string boxEnemyCanAttack;
+    public SpawnEnemy.BoxSelection boxSelect;
 
     public GameObject globalLight;
     public GameObject pointLight;
@@ -103,17 +105,23 @@ public class PlayerController : MonoBehaviour
     {
         if (playable)
         {
-            if (collision.gameObject.tag == "Electric Wall")
+            if (collision.gameObject.tag == "Goal")
             {
-                GameManager.Instance.isDead = true;
-                Destroy(this.gameObject);
+                //MenuManager.Instance.MapSelect(2);
+                SceneManager.LoadScene(2);
             }
-        }
-        else
-        {
-            if (collision.gameObject.tag == "Bullet")
+
+            if (collision.gameObject.name == "Box1")
             {
-                Debug.Log("GO");
+                
+            }
+            if (collision.gameObject.name == "Box2")
+            {
+                GameManager.Instance.startPointNumber = 1;
+            }
+            if (collision.gameObject.name == "Box3")
+            {
+                GameManager.Instance.startPointNumber = 2;
             }
         }
     }
@@ -177,16 +185,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.name == "Box1")
-    //    {
-    //        enemyCanAttack = collision.gameObject.name;
-    //    }
-    //    else if (collision.gameObject.name == "Box2")
-    //    {
-    //        enemyCanAttack = collision.gameObject.name;
-    //    }
-    //}
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Box1")
+        {
+            boxSelect = SpawnEnemy.BoxSelection.Box1;
+            GameManager.Instance.startPointNumber = 0;
+        }
+        else if (collision.gameObject.name == "Box2")
+        {
+            boxSelect = SpawnEnemy.BoxSelection.Box2;
+            GameManager.Instance.startPointNumber = 1;
+        }
+        else if (collision.gameObject.name == "Box3")
+        {
+            boxSelect = SpawnEnemy.BoxSelection.Box2;
+            GameManager.Instance.startPointNumber = 2;
+        }
+    }
 
 }

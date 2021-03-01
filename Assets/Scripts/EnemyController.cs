@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
         currentColor = sprite.color;
         enemyRb = GetComponent<Rigidbody2D>();
 
-        if (this.gameObject.GetComponentInParent<SpawnEnemy>().box == SpawnEnemy.BoxSelection.Box2)
+        if (this.gameObject.GetComponentInParent<SpawnEnemy>().box == SpawnEnemy.BoxSelection.Box1)
         {
             boxSelect = SpawnEnemy.BoxSelection.Box1;
         }
@@ -75,9 +75,14 @@ public class EnemyController : MonoBehaviour
         {
             if (col.gameObject.GetComponent<PlayerController>().playable)
             {
-        print("MOTE");
-                enemyRb.MovePosition(this.transform.position + (col.gameObject.transform.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
-
+                if (col.gameObject.GetComponent<PlayerController>().boxSelect == boxSelect)
+                {
+                    enemyRb.MovePosition(this.transform.position + (col.gameObject.transform.position - this.transform.position).normalized * enemyMoveSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    ReturnToStartPos();
+                }
             }
         }
     }

@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject playerPrefabs;
-    public Transform playerStartPoint;
+    [SerializeField] private Transform[] playerStartPoint;
+    public int startPointNumber = 0;
 
     public bool isDead = false;
 
@@ -62,15 +63,14 @@ public class GameManager : MonoBehaviour
 
         if (target.gameObject.GetComponent<PlayerController>().deadByEnemy)
         {
-            GameObject player = Instantiate(playerPrefabs, playerStartPoint.position, playerPrefabs.transform.rotation);
+            GameObject player = Instantiate(playerPrefabs, playerStartPoint[startPointNumber].position, playerPrefabs.transform.rotation);
             player.name = "Player";
             players.Add(player);
 
             if (players.Count > playersPlayable)
             {
-
-                Destroy(players[0]);
-                players.RemoveAt(0);
+                Destroy(players[1]);
+                players.RemoveAt(1);
             }
 
             SetTarget();
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            GameObject player = Instantiate(playerPrefabs, playerStartPoint.position, playerPrefabs.transform.rotation);
+            GameObject player = Instantiate(playerPrefabs, playerStartPoint[startPointNumber].position, playerPrefabs.transform.rotation);
             player.name = "Player";
             players.Add(player);
 
@@ -94,6 +94,11 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2 && canSwitchPlayable)
         {
+            /*players.Sort(delegate (GameObject a, GameObject b)
+            {
+                return (a.GetComponent<PlayerController>().playable).CompareTo(b.GetComponent<PlayerController>().playable);
+            });*/
+
             SoundManager.Instance.PlaySound(SoundName.PlayerChange);
 
             foreach (GameObject player in players)

@@ -8,6 +8,10 @@ TagManager:
   - Bullet
   - Wall
   - Electric Wall
+  - Goal
+  - Box1
+  - Box2
+  - Box3
   layers:
   - Default
   - TransparentFX
