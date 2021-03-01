@@ -10,10 +10,12 @@ public class ShotEnemyController : EnemyController
 
     public GameObject enemyBullet;
 
+    public static ShotEnemyController Instance;
 
     protected override void Start()
     {
         base.Start();
+        Instance = this;
         rechargeDuration = shotPlayerDuration;
     }
 
@@ -48,8 +50,8 @@ public class ShotEnemyController : EnemyController
                     Ray r = new Ray(transform.position, transform.up);
                     //if (Physics.Raycast(r, range, playerLayer))
                     //{
-                        Vector3 rotateVectorLeft = Quaternion.Euler(0, 0, 45) * transform.up;  
-                        Vector3 rotateVectorRight = Quaternion.Euler(0, 0, -45) * transform.up;
+                        Vector3 rotateVectorLeft = Quaternion.Euler(0, 0, 30) * transform.up;  
+                        Vector3 rotateVectorRight = Quaternion.Euler(0, 0, -30) * transform.up;
 
                         GameObject bullet1 = Instantiate(enemyBullet, transform.position + rotateVectorLeft * 2, transform.rotation);
                         GameObject bullet2 = Instantiate(enemyBullet, transform.position + rotateVectorRight * 2, transform.rotation);

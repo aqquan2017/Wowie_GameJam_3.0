@@ -59,19 +59,35 @@ public class GameManager : MonoBehaviour
     {
         canSwitchPlayable = false;
         yield return new WaitForSeconds(3);
-        GameObject player = Instantiate(playerPrefabs, playerStartPoint.position, playerPrefabs.transform.rotation);
-        player.name = "Player";
-        players.Add(player);
 
-        if (players.Count > playersPlayable)
+        if (target.gameObject.GetComponent<PlayerController>().deadByEnemy)
         {
-            
+            GameObject player = Instantiate(playerPrefabs, playerStartPoint.position, playerPrefabs.transform.rotation);
+            player.name = "Player";
+            players.Add(player);
+
+            if (players.Count > playersPlayable)
+            {
+
+                Destroy(players[0]);
+                players.RemoveAt(0);
+            }
+
+            SetTarget();
+            canSwitchPlayable = true;
+        }
+        else
+        {
+            GameObject player = Instantiate(playerPrefabs, playerStartPoint.position, playerPrefabs.transform.rotation);
+            player.name = "Player";
+            players.Add(player);
+
             Destroy(players[0]);
             players.RemoveAt(0);
-        }
 
-        SetTarget();
-        canSwitchPlayable = true;
+            SetTarget();
+            canSwitchPlayable = true;
+        }
     }
 
     void SetPlayerPlayable()

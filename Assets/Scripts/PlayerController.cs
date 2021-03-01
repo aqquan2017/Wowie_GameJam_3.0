@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float bulletMoveSpeed = 10;
 
     public bool playable = true;
+    public bool deadByEnemy;
+    public bool enemyCanAttack = true;
 
     public GameObject globalLight;
     public GameObject pointLight;
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -126,7 +128,8 @@ public class PlayerController : MonoBehaviour
                 SoundManager.Instance.PlaySound(SoundName.PlayerDie);
 
                 GameManager.Instance.isDead = true;
-                
+                deadByEnemy = true;
+
                 Color deadColor = this.GetComponent<SpriteRenderer>().color;
                 deadColor.a = 30;
                 this.GetComponent<SpriteRenderer>().color = deadColor;
@@ -142,9 +145,9 @@ public class PlayerController : MonoBehaviour
                 if (health <= 0)
                 {
                     SoundManager.Instance.PlaySound(SoundName.PlayerDie);
-                    //Instantiate(bloodPartical, this.transform.position, Quaternion.identity);
 
                     GameManager.Instance.isDead = true;
+                    deadByEnemy = true;
 
                     Color deadColor = this.GetComponent<SpriteRenderer>().color;
                     deadColor.a = 30;
@@ -155,11 +158,35 @@ public class PlayerController : MonoBehaviour
                     gameObject.layer = LayerMask.NameToLayer("Corpse");
                 }
             }
+
+            if (collision.gameObject.tag == "Electric Wall")
+            {
+                SoundManager.Instance.PlaySound(SoundName.PlayerDie);
+
+                GameManager.Instance.isDead = true;
+                deadByEnemy = false;
+
+                playable = false;
+
+                gameObject.layer = LayerMask.NameToLayer("Corpse");
+            }
         }
         else
         {
             
         }
     }
+
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.name == "Box1")
+    //    {
+    //        enemyCanAttack = collision.gameObject.name;
+    //    }
+    //    else if (collision.gameObject.name == "Box2")
+    //    {
+    //        enemyCanAttack = collision.gameObject.name;
+    //    }
+    //}
 
 }
