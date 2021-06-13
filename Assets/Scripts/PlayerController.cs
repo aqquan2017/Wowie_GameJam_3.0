@@ -163,18 +163,6 @@ public class PlayerController : MonoBehaviour
                     gameObject.layer = LayerMask.NameToLayer("Corpse");
                 }
             }
-
-            if (collision.gameObject.tag == "Electric Wall")
-            {
-                SoundManager.Instance.PlaySound(SoundName.PlayerDie);
-
-                GameManager.Instance.isDead = true;
-                deadByEnemy = false;
-
-                playable = false;
-
-                gameObject.layer = LayerMask.NameToLayer("Corpse");
-            }
         }
         else
         {

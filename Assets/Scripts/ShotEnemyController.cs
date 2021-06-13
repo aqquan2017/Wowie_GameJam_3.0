@@ -30,10 +30,6 @@ public class ShotEnemyController : EnemyController
 
     }
 
-    protected override void FixedUpdate()
-    {
-
-    }
     void ShotPlayer()
     {
         Collider2D[] playerCol = Physics2D.OverlapCircleAll(this.transform.position, range, playerLayer);
@@ -70,13 +66,7 @@ public class ShotEnemyController : EnemyController
                     bullet3.GetComponent<Rigidbody2D>().AddForce(transform.up * enemyBulletSpeed, ForceMode2D.Impulse);
                     print("ENEMY SHOT");
 
-                        rechargeDuration = shotPlayerDuration;
-                    //}
-                    //else
-                    //{
-                    //    print("ERR");
-                    //}
-
+                    rechargeDuration = shotPlayerDuration;
                 }
             }
         }

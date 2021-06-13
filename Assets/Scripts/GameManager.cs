@@ -28,13 +28,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int playersPlayable;
     private bool canSwitchPlayable = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         SetTarget();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isDead)
@@ -42,8 +40,6 @@ public class GameManager : MonoBehaviour
             StartCoroutine(RespawnPlayer());
             isDead = false;
         }
-
-        SetPlayerPlayable();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -98,33 +94,6 @@ public class GameManager : MonoBehaviour
 
             SetTarget();
             canSwitchPlayable = true;
-        }
-    }
-
-    void SetPlayerPlayable()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2 && canSwitchPlayable)
-        {
-            SoundManager.Instance.PlaySound(SoundName.PlayerChange);
-
-            foreach (GameObject player in players)
-            {
-
-                if (player.layer == 6)
-                {
-                    player.layer = LayerMask.NameToLayer("Player");
-                    player.GetComponent<PlayerController>().playable = true;
-                    player.GetComponent<PlayerController>().health = 100;
-                }
-                else
-                {
-                    player.layer = LayerMask.NameToLayer("Corpse");
-                    player.GetComponent<PlayerController>().playable = false;
-                    player.GetComponent<PlayerController>().health = 0;
-                }
-            }
-
-            SetTarget();
         }
     }
 }

@@ -7,11 +7,6 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject mainUI;
     public GameObject mapSelectUI; 
-
-
-
-
-
     void Start()
     {
         mainUI.SetActive(true);

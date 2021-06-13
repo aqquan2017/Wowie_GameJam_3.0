@@ -30,20 +30,12 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PlaySound(SoundName s)
     {
         int i = (int)s;
         audioSource.PlayOneShot(soundDB[i].audio, soundDB[i].volume);
     }
 }
-
-
 
 
 [System.Serializable]

@@ -67,8 +67,6 @@ public class EnemyController : MonoBehaviour
 
     void ChasingPlayer()
     {
-        /*if (player == null)
-            return;*/
         Collider2D[] playerCol = Physics2D.OverlapCircleAll(this.transform.position, range, playerLayer);
 
         foreach (Collider2D col in playerCol)
