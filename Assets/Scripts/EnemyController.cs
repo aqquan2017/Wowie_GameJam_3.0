@@ -115,8 +115,6 @@ public class EnemyController : MonoBehaviour
                 enemyMoveSpeed = 0;
                 health -= 20;
             }
-            
-
         }
     }
 }

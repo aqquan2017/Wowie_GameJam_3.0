@@ -27,14 +27,12 @@ public class PlayerController : MonoBehaviour
     public float health = 100;
     public ParticleSystem bloodPartical;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerDir.x = Input.GetAxisRaw("Horizontal");
@@ -44,8 +42,6 @@ public class PlayerController : MonoBehaviour
 
         Shooting();
 
-        
-
         if (playable)
         {
             globalLight.SetActive(true);
@@ -54,7 +50,6 @@ public class PlayerController : MonoBehaviour
         {
             globalLight.SetActive(false);
         }
-            
 
     }
 
@@ -107,8 +102,10 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Goal")
             {
-                //MenuManager.Instance.MapSelect(2);
-                SceneManager.LoadScene(2);
+                int nextScene = SceneManager.GetActiveScene().buildIndex;
+                nextScene = nextScene + 1 >= SceneManager.sceneCountInBuildSettings ? 0 : nextScene + 1;
+
+                SceneManager.LoadScene( nextScene);
             }
 
             if (collision.gameObject.name == "Box1")

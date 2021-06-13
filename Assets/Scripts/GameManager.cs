@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,6 +44,16 @@ public class GameManager : MonoBehaviour
         }
 
         SetPlayerPlayable();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            BackToMenu();
+        }
+    }
+
+    void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void SetTarget()
@@ -94,16 +105,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && players.Count >= 2 && canSwitchPlayable)
         {
-            /*players.Sort(delegate (GameObject a, GameObject b)
-            {
-                return (a.GetComponent<PlayerController>().playable).CompareTo(b.GetComponent<PlayerController>().playable);
-            });*/
-
             SoundManager.Instance.PlaySound(SoundName.PlayerChange);
 
             foreach (GameObject player in players)
             {
-                //player.GetComponent<PlayerController>().playable = !player.GetComponent<PlayerController>().playable;
 
                 if (player.layer == 6)
                 {

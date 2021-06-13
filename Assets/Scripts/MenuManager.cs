@@ -6,19 +6,16 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public GameObject mainUI;
-    public GameObject mapSelectUI;
+    public GameObject mapSelectUI; 
 
-    // Start is called before the first frame update
+
+
+
+
     void Start()
     {
         mainUI.SetActive(true);
         mapSelectUI.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void StartGame()

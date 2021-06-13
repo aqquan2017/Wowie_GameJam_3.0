@@ -21,13 +21,6 @@ public class Bullet : MonoBehaviour
             Destroy(littleExpose.gameObject, 4);
         }
 
-        //if (collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Enemy")))
-        //{
-        //    SoundManager.Instance.PlaySound(SoundName.EnemyHit);
-        //    ParticleSystem littleExpose = Instantiate(littleExposePartical, this.transform.position, Quaternion.identity);
-        //    Destroy(littleExpose.gameObject, 4);
-        //}
-
         if (collision.collider.IsTouchingLayers(LayerMask.NameToLayer("Wall")))
         {
             SoundManager.Instance.PlaySound(SoundName.WallHit);
